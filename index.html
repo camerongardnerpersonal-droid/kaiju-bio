@@ -33,13 +33,13 @@
     /* Page container */
     .page{
       min-height: 100vh;
-      padding: 56px 56px 56px 56px;
+      padding: 56px;
       position: relative;
       display: flex;
       align-items: flex-start;
     }
 
-    /* SUBTLE GRAIN / NOISE OVERLAY */
+    /* Subtle grain / noise overlay */
     .page::before{
       content: "";
       position: fixed;
@@ -53,7 +53,7 @@
           transparent 1px,
           transparent 3px
         );
-      opacity: 0.22; /* master intensity knob */
+      opacity: 0.22; /* adjust 0.15–0.30 if desired */
       z-index: 0;
     }
 
@@ -84,7 +84,7 @@
     .wrap{
       width: 100%;
       max-width: 900px;
-      margin-top: 180px; /* more breathing room below logo */
+      margin-top: 180px; /* vertical breathing room under logo */
       display: flex;
       flex-direction: column;
       gap: 40px;
@@ -100,6 +100,15 @@
       line-height: 0.92;
       font-size: clamp(3.8rem, 6vw, 6.4rem);
       text-transform: uppercase;
+    }
+
+    /* Alt tagline */
+    .tagline{
+      margin-top: 12px;
+      font-size: 0.95rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--white-70);
     }
 
     .subhead{
@@ -162,6 +171,8 @@
 
       <h1>KAIJU BIO</h1>
 
+      <p class="tagline">Target Everything.</p>
+
       <p class="subhead">
         Building next-generation molecular discovery and delivery platforms
         that enable therapeutic access to biological targets beyond the reach
@@ -182,10 +193,3 @@
   </main>
 </body>
 </html>
-
-
-
-
-
-
-
