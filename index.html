@@ -27,30 +27,48 @@
       background: var(--kaiju-red);
       color: var(--white);
       font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      overflow-x: hidden;
     }
 
-    /* Page layout */
+    /* Page container */
     .page{
       min-height: 100vh;
       padding: 56px 56px 56px 56px;
-      display: flex;
-      justify-content: flex-start;
-      align-items: flex-start;
       position: relative;
+      display: flex;
+      align-items: flex-start;
     }
 
-    /* Logo pinned to top-left */
+    /* SUBTLE GRAIN / NOISE OVERLAY */
+    .page::before{
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        repeating-radial-gradient(
+          circle at 0 0,
+          rgba(255,255,255,0.03),
+          rgba(255,255,255,0.03) 1px,
+          transparent 1px,
+          transparent 3px
+        );
+      opacity: 0.22; /* master intensity knob */
+      z-index: 0;
+    }
+
+    /* Logo pinned top-left */
     .logo{
       position: absolute;
       top: 28px;
       left: 28px;
       width: 140px;
       height: auto;
-      animation: logoIntro 0.45s ease-out forwards;
       opacity: 0;
+      animation: logoIntro 0.45s ease-out forwards;
+      z-index: 2;
     }
 
-    /* Subtle entrance animation */
     @keyframes logoIntro {
       from {
         opacity: 0;
@@ -62,13 +80,16 @@
       }
     }
 
+    /* Content stack */
     .wrap{
       width: 100%;
       max-width: 900px;
-      margin-top: 120px; /* space below logo */
+      margin-top: 180px; /* more breathing room below logo */
       display: flex;
       flex-direction: column;
-      gap: 36px;
+      gap: 40px;
+      position: relative;
+      z-index: 1;
     }
 
     h1{
@@ -82,9 +103,8 @@
     }
 
     .subhead{
-      margin-top: 18px;
       max-width: 760px;
-      font-size: 1.18rem;
+      font-size: 1.2rem;
       line-height: 1.75;
       color: var(--white-85);
     }
@@ -93,13 +113,11 @@
       height: 1px;
       width: min(720px, 100%);
       background: var(--rule);
-      margin: 28px 0 0 0;
+      margin-top: 8px;
     }
 
     .meta{
-      display:flex;
-      align-items:center;
-      padding-top: 14px;
+      padding-top: 8px;
     }
 
     .link{
@@ -114,7 +132,7 @@
     }
 
     footer{
-      margin-top: 64px;
+      margin-top: 72px;
       color: var(--white-70);
       font-size: 0.9rem;
     }
@@ -127,7 +145,8 @@
         width: 110px;
       }
       .wrap{
-        margin-top: 96px;
+        margin-top: 140px;
+        gap: 32px;
       }
       h1{ letter-spacing: 0.05em; }
     }
@@ -137,7 +156,6 @@
 <body>
   <main class="page">
 
-    <!-- Logo with subtle motion -->
     <img src="logo.png" alt="Kaiju Bio logo" class="logo" />
 
     <div class="wrap">
@@ -164,6 +182,7 @@
   </main>
 </body>
 </html>
+
 
 
 
